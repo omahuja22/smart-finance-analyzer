@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Smart Finance Analyzer{% endblock %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+  <h1 class="fw-bold mb-3">Take Control of Your Personal Finances</h1>
+  <p class="text-muted fs-5">
+    Track expenses, analyze spending patterns, set budgets, and improve your financial health —
+    all in one intelligent dashboard.
+  </p>
+
+  <div class="mt-4">
+    <a href="/register" class="btn btn-primary btn-lg me-3">Get Started</a>
+    <a href="/login" class="btn btn-outline-secondary btn-lg">Login</a>
+  </div>
+</div>
+
+<hr class="my-5">
+
+<!-- FEATURES -->
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card p-4 h-100">
+      <h5>Smart Expense Tracking</h5>
+      <p class="text-muted">
+        Automatically categorize expenses using machine learning and track spending across
+        food, travel, bills, shopping, and more.
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-4 h-100">
+      <h5>Budget & Alerts</h5>
+      <p class="text-muted">
+        Set category-wise budgets and receive alerts when spending exceeds safe limits,
+        helping you stay financially disciplined.
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-4 h-100">
+      <h5>Insights & Analytics</h5>
+      <p class="text-muted">
+        Visualize your daily and monthly expenses, predict savings, and get a clear financial
+        health score based on your habits.
+      </p>
+    </div>
+  </div>
+</div>
+
+<hr class="my-5">
+
+<!-- FINAL CTA -->
+<div class="text-center">
+  <h4 class="fw-semibold mb-3">Start managing your money better today</h4>
+  <a href="/register" class="btn btn-success btn-lg">Create Free Account</a>
+</div>
+
+{% endblock %}

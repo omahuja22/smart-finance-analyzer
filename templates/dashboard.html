@@ -1,0 +1,260 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<!-- ================= ALERTS ================= -->
+{% for msg in alert_messages %}
+<div class="alert alert-warning mb-3">
+  <strong>Attention:</strong> {{ msg }}
+</div>
+{% endfor %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="alert alert-success mb-3">
+  {{ messages[0] }}
+</div>
+{% endif %}
+{% endwith %}
+
+<!-- ================= SUMMARY CARDS ================= -->
+<div class="row g-4 mb-4">
+  <div class="col-md-4">
+    <div class="card p-3 text-center">
+      <h6 class="text-muted">Monthly Income</h6>
+      <h4 class="fw-bold">₹{{ income_value if income_value else "—" }}</h4>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-3 text-center">
+      <h6 class="text-muted">Total Spent</h6>
+      <h4 class="fw-bold text-danger">₹{{ total_spent }}</h4>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-3 text-center">
+      <h6 class="text-muted">Net Savings</h6>
+      <h4 class="fw-bold text-success">
+        {% if savings_value is not none %}
+          ₹{{ savings_value }} ({{ savings_rate }}%)
+        {% else %}
+          —
+        {% endif %}
+      </h4>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ADD EXPENSE ================= -->
+<div class="card p-4 mb-4">
+  <h5 class="mb-3">Add Expense</h5>
+  <form method="POST" class="row g-3">
+    <div class="col-md-3">
+      <input name="amount" class="form-control" placeholder="Amount (₹)" required>
+    </div>
+    <div class="col-md-6">
+      <input name="description" class="form-control" placeholder="Expense description" required>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-primary w-100">Add Expense</button>
+    </div>
+  </form>
+</div>
+
+<!-- ================= CSV UPLOAD & EXPORT ================= -->
+<div class="row g-4 mb-4">
+  <div class="col-md-6">
+    <div class="card p-4 h-100">
+      <h5 class="mb-3">Upload Bank Statement (CSV)</h5>
+      <form method="POST" action="/upload-csv" enctype="multipart/form-data" class="row g-3">
+        <div class="col-md-8">
+          <input type="file" name="file" class="form-control" accept=".csv" required>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-secondary w-100">Upload CSV</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card p-4 h-100 d-flex justify-content-center">
+      <a href="/export-expenses" class="btn btn-outline-primary w-100">
+        Download Expense Report (CSV)
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SET BUDGET ================= -->
+<div class="card p-4 mb-4">
+  <h5 class="mb-1">Set Category Budget</h5>
+  <p class="text-muted small mb-3">
+    Budgets reset automatically every month.
+  </p>
+  <form method="POST" class="row g-3">
+    <div class="col-md-5">
+      <input name="budget_category" class="form-control" placeholder="Category (e.g. Food)">
+    </div>
+    <div class="col-md-5">
+      <input name="budget_limit" class="form-control" placeholder="Monthly Limit (₹)">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-warning w-100">Save Budget</button>
+    </div>
+  </form>
+</div>
+
+<!-- ================= BUDGET OVERVIEW ================= -->
+{% if budget_usage %}
+<div class="card p-4 mb-4">
+  <h5 class="mb-3">Budget Overview</h5>
+
+  {% for b in budget_usage %}
+  <div class="d-flex justify-content-between align-items-center mb-1">
+    <div>
+      <strong>{{ b.category }}</strong>
+      — ₹{{ b.spent }} / ₹{{ b.limit }}
+
+      {% if b.usage < 70 %}
+        <span class="badge bg-success ms-2">Safe</span>
+      {% elif b.usage < 90 %}
+        <span class="badge bg-warning text-dark ms-2">Warning</span>
+      {% else %}
+        <span class="badge bg-danger ms-2">Exceeded</span>
+      {% endif %}
+    </div>
+
+    <a href="/delete-budget/{{ b.id }}"
+       class="btn btn-sm btn-outline-danger"
+       onclick="return confirm('Delete this budget?')">
+      Delete
+    </a>
+  </div>
+
+  <div class="progress mb-3">
+    <div class="progress-bar
+      {% if b.usage < 70 %}bg-success
+      {% elif b.usage < 90 %}bg-warning
+      {% else %}bg-danger{% endif %}"
+      style="width: {{ b.usage }}%">
+      {{ b.usage }}%
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- ================= INCOME & SAVINGS ================= -->
+<div class="card p-4 mb-4">
+  <h5 class="mb-3">Monthly Income & Savings</h5>
+  <form method="POST" class="row g-3">
+    <div class="col-md-8">
+      <input name="income" class="form-control" placeholder="Enter Monthly Income (₹)">
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-success w-100">Calculate Savings</button>
+    </div>
+  </form>
+
+  {% if predicted_savings %}
+  <div class="mt-3">
+    <p><strong>Predicted Savings:</strong> ₹{{ predicted_savings }}</p>
+    <p><strong>Financial Health Score:</strong> {{ health_score }}/100</p>
+  </div>
+  {% endif %}
+</div>
+
+<!-- ================= CHARTS ================= -->
+<div class="row g-4 mb-4">
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h6 class="text-center">Category-wise Spending</h6>
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h6 class="text-center">Daily Spending Trend</h6>
+      <canvas id="dailyChart"></canvas>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h6 class="text-center">Monthly Spending Trend</h6>
+      <canvas id="monthlyChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ================= EXPENSE LIST ================= -->
+<div class="card p-4 mb-4">
+  <h5>Your Expenses</h5>
+
+  {% if expenses %}
+  <ul class="list-group">
+    {% for e in expenses %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span>
+        {{ e.description }} — ₹{{ e.amount }}
+        <small class="text-muted">({{ e.category }})</small>
+      </span>
+      <a href="/delete-expense/{{ e.id }}"
+         class="btn btn-sm btn-danger"
+         onclick="return confirm('Delete this expense?')">
+        Delete
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="text-muted">
+    No expenses yet. Add your first expense or upload a CSV file to get started.
+  </p>
+  {% endif %}
+</div>
+
+<!-- ================= CHART JS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+Chart.defaults.color = "#0f172a";
+
+new Chart(document.getElementById("pieChart"), {
+  type: "pie",
+  data: {
+    labels: {{ categories | tojson }},
+    datasets: [{ data: {{ amounts | tojson }} }]
+  }
+});
+
+new Chart(document.getElementById("dailyChart"), {
+  type: "line",
+  data: {
+    labels: {{ daily_dates | tojson }},
+    datasets: [{
+      label: "Daily Spend",
+      data: {{ daily_amounts | tojson }},
+      borderColor: "#2563eb",
+      backgroundColor: "rgba(37,99,235,0.2)"
+    }]
+  }
+});
+
+new Chart(document.getElementById("monthlyChart"), {
+  type: "bar",
+  data: {
+    labels: {{ months | tojson }},
+    datasets: [{
+      label: "Monthly Spend",
+      data: {{ monthly_amounts | tojson }},
+      backgroundColor: "#93c5fd"
+    }]
+  }
+});
+</script>
+
+{% endblock %}

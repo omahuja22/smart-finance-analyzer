@@ -1,0 +1,15 @@
+
+---
+
+# 🚀 DEPLOYMENT GUIDE (COPYABLE)
+
+## ✅ Step 1: `requirements.txt`
+
+```txt
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Werkzeug
+pandas
+scikit-learn
+gunicorn

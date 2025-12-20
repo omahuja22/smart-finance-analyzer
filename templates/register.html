@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Register | Smart Finance Analyzer{% endblock %}
+
+{% block content %}
+<div class="row align-items-center justify-content-center" style="min-height:75vh;">
+
+  <!-- LEFT INFO PANEL -->
+  <div class="col-md-6 d-none d-md-block pe-5">
+    <h1 class="fw-bold mb-3">Create your account 🚀</h1>
+    <p class="text-muted fs-5">
+      Join Smart Finance Analyzer and take control of your money with AI-powered insights.
+    </p>
+
+    <ul class="mt-4 text-muted fs-6">
+      <li>📊 Visual spending analytics</li>
+      <li>🎯 Budget tracking by category</li>
+      <li>⚠️ Unusual expense detection</li>
+      <li>💡 Personalized financial tips</li>
+    </ul>
+  </div>
+
+  <!-- REGISTER CARD -->
+  <div class="col-md-4 col-sm-10">
+    <div class="card p-4">
+      <h4 class="fw-bold mb-1">Register</h4>
+      <p class="text-muted mb-4">Start managing your finances smarter</p>
+
+      <form method="POST">
+        <div class="mb-3">
+          <label class="form-label text-muted">Full Name</label>
+          <input name="name" class="form-control" placeholder="Your name" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-muted">Email</label>
+          <input name="email" type="email" class="form-control" placeholder="you@example.com" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-muted">Password</label>
+          <input name="password" type="password" class="form-control" placeholder="Create a strong password" required>
+        </div>
+
+        <button class="btn btn-success w-100 py-2 fw-semibold mt-2">
+          Create Account
+        </button>
+      </form>
+
+      <div class="text-center mt-4">
+        <span class="text-muted">Already have an account?</span>
+        <a href="/login" class="fw-semibold text-decoration-none">
+          Login
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

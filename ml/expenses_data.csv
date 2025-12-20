@@ -1,0 +1,150 @@
+text,category
+zomato order,Food
+swiggy lunch,Food
+dominos pizza,Food
+mcdonalds meal,Food
+kfc order,Food
+local dhaba food,Food
+college canteen food,Food
+office lunch tiffin,Food
+street food chaat,Food
+chai samosa,Food
+blinkit snacks order,Food
+zepto instant delivery,Food
+
+monthly grocery shopping,Groceries
+dmart groceries,Groceries
+reliance smart groceries,Groceries
+big bazaar grocery bill,Groceries
+kirana store purchase,Groceries
+vegetable mandi shopping,Groceries
+fruit vendor purchase,Groceries
+jiomart grocery order,Groceries
+
+uber cab ride,Travel
+ola cab booking,Travel
+rapido bike ride,Travel
+auto rickshaw fare,Travel
+bus ticket,Travel
+metro card recharge,Travel
+train ticket irctc,Travel
+redbus booking,Travel
+flight booking makemytrip,Travel
+hotel booking goibibo,Travel
+
+petrol refill,Fuel
+diesel refill,Fuel
+cng refill,Fuel
+bike petrol,Fuel
+car petrol,Fuel
+fastag recharge,Fuel
+
+electricity bill,Bills
+water bill,Bills
+gas cylinder booking,Bills
+society maintenance,Bills
+credit card bill,Bills
+dth recharge,Bills
+broadband installation,Bills
+
+jio recharge,Mobile & Internet
+airtel recharge,Mobile & Internet
+vi recharge,Mobile & Internet
+bsnl recharge,Mobile & Internet
+wifi broadband bill,Mobile & Internet
+dongle data recharge,Mobile & Internet
+
+pg rent payment,Rent
+hostel rent payment,Rent
+flat rent payment,Rent
+room rent,Rent
+
+college semester fees,Education
+exam fees,Education
+udemy course purchase,Education
+coursera course payment,Education
+unacademy subscription,Education
+physics wallah batch,Education
+coding ninjas course,Education
+
+doctor consultation,Health
+hospital bill,Health
+medicine purchase 1mg,Health
+pharmeasy order,Health
+apollo pharmacy,Health
+medical test charges,Health
+health checkup package,Health
+
+gym membership,Fitness
+cultfit subscription,Fitness
+yoga class fees,Fitness
+zumba classes,Fitness
+
+netflix subscription,Entertainment
+amazon prime subscription,Entertainment
+hotstar subscription,Entertainment
+sonyliv subscription,Entertainment
+spotify premium,Entertainment
+youtube premium,Entertainment
+movie tickets bookmyshow,Entertainment
+
+amazon shopping,Shopping
+flipkart order,Shopping
+myntra clothes shopping,Shopping
+ajio fashion purchase,Shopping
+meesho order,Shopping
+tatacliq shopping,Shopping
+offline mall shopping,Shopping
+
+mobile phone purchase,Electronics
+laptop purchase,Electronics
+tablet purchase,Electronics
+headphones purchase,Electronics
+earphones purchase,Electronics
+power bank purchase,Electronics
+
+life insurance premium,Insurance
+health insurance premium,Insurance
+bike insurance premium,Insurance
+car insurance premium,Insurance
+term insurance premium,Insurance
+
+bike emi payment,EMI / Loans
+car emi payment,EMI / Loans
+education loan emi,EMI / Loans
+personal loan emi,EMI / Loans
+credit card emi,EMI / Loans
+
+mutual fund sip,Investments
+zerodha investment,Investments
+groww investment,Investments
+paytm money investment,Investments
+stock market investment,Investments
+gold investment,Investments
+
+office lunch expense,Office / Work
+office cab expense,Office / Work
+work travel expense,Office / Work
+office stationery purchase,Office / Work
+laptop accessories purchase,Office / Work
+
+parents medical expense,Family
+family grocery expense,Family
+family function expense,Family
+home repair expense,Family
+
+diwali shopping,Festivals & Gifts
+diwali gift purchase,Festivals & Gifts
+rakhi gift purchase,Festivals & Gifts
+birthday gift purchase,Festivals & Gifts
+wedding gift purchase,Festivals & Gifts
+charity donation,Festivals & Gifts
+
+income tax payment,Taxes
+professional tax payment,Taxes
+property tax payment,Taxes
+
+cash withdrawal,Miscellaneous
+unexpected emergency expense,Miscellaneous
+small daily expense,Miscellaneous
+miscellaneous payment,Miscellaneous
