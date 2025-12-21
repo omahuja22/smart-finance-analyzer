@@ -116,9 +116,11 @@ def dashboard():
         if b:
             b.limit = limit
         else:
-            db.session.add(
-                Budget(user_id=current_user.id, category=cat, limit=limit)
-            )
+            db.session.add(Budget(
+                user_id=current_user.id,
+                category=cat,
+                limit=limit
+            ))
         db.session.commit()
 
     # ---------- FETCH EXPENSES ----------
@@ -146,17 +148,25 @@ def dashboard():
         )
 
     # ---------- ANOMALY DETECTION ----------
+    IGNORE_ANOMALY_CATEGORIES = [
+        "Savings", "Investments", "Insurance",
+        "Rent", "EMI / Loans"
+    ]
+
     if len(amounts_only) >= 3:
         mean = statistics.mean(amounts_only)
         std = statistics.stdev(amounts_only)
 
         for e in expenses:
+            if e.category in IGNORE_ANOMALY_CATEGORIES:
+                continue
+
             if e.amount > mean + 3 * std:
                 alert_messages.append(
-                    f"Spending spike detected: ₹{e.amount}. Please review."
+                    f"Spending spike detected: ₹{e.amount} in {e.category}. Please review."
                 )
 
-    # ---------- BUDGET USAGE (MONTHLY AUTO RESET) ----------
+    # ---------- BUDGET USAGE (MONTHLY RESET) ----------
     current_month = datetime.now().strftime("%Y-%m")
     budget_usage = []
 
@@ -217,6 +227,15 @@ def dashboard():
         budget_usage=budget_usage,
         alert_messages=alert_messages
     )
+
+# ---------------- CLEAR ALL EXPENSES ----------------
+@app.route("/clear-expenses", methods=["POST"])
+@login_required
+def clear_expenses():
+    Expense.query.filter_by(user_id=current_user.id).delete()
+    db.session.commit()
+    flash("All expenses cleared successfully")
+    return redirect(url_for("dashboard"))
 
 # ---------------- CSV UPLOAD ----------------
 @app.route("/upload-csv", methods=["POST"])

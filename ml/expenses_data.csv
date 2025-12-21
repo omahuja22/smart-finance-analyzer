@@ -1,150 +1,158 @@
 text,category
-zomato order,Food
-swiggy lunch,Food
-dominos pizza,Food
-mcdonalds meal,Food
-kfc order,Food
-local dhaba food,Food
-college canteen food,Food
-office lunch tiffin,Food
-street food chaat,Food
-chai samosa,Food
-blinkit snacks order,Food
-zepto instant delivery,Food
+zomato food order dinner,Dining & Restaurants
+swiggy lunch online food,Dining & Restaurants
+dominos pizza food order,Dining & Restaurants
+mcdonalds fast food meal,Dining & Restaurants
+kfc fried chicken order,Dining & Restaurants
+local dhaba food expense,Dining & Restaurants
+college canteen food expense,Dining & Restaurants
+office lunch tiffin food,Dining & Restaurants
+street food chaat snacks,Dining & Restaurants
+chai samosa snacks food,Dining & Restaurants
+restaurant dinner with friends,Dining & Restaurants
+weekend dining out restaurant,Dining & Restaurants
 
-monthly grocery shopping,Groceries
-dmart groceries,Groceries
-reliance smart groceries,Groceries
-big bazaar grocery bill,Groceries
-kirana store purchase,Groceries
-vegetable mandi shopping,Groceries
-fruit vendor purchase,Groceries
-jiomart grocery order,Groceries
+monthly grocery shopping essentials,Food & Groceries
+dmart grocery monthly bill,Food & Groceries
+reliance smart grocery purchase,Food & Groceries
+big bazaar grocery shopping,Food & Groceries
+kirana store grocery items,Food & Groceries
+vegetable mandi vegetables fruits,Food & Groceries
+fruit vendor fruit purchase,Food & Groceries
+jiomart grocery online order,Food & Groceries
+milk bread eggs groceries,Food & Groceries
+daily household essentials groceries,Food & Groceries
 
-uber cab ride,Travel
-ola cab booking,Travel
-rapido bike ride,Travel
-auto rickshaw fare,Travel
-bus ticket,Travel
-metro card recharge,Travel
-train ticket irctc,Travel
-redbus booking,Travel
-flight booking makemytrip,Travel
-hotel booking goibibo,Travel
+uber cab ride transport,Transport
+ola cab booking transport,Transport
+rapido bike ride transport,Transport
+auto rickshaw fare transport,Transport
+bus ticket local transport,Transport
+metro card recharge transport,Transport
+train ticket irctc travel,Transport
+redbus bus booking travel,Transport
+office commute cab transport,Transport
+local travel daily commute,Transport
 
-petrol refill,Fuel
-diesel refill,Fuel
-cng refill,Fuel
-bike petrol,Fuel
-car petrol,Fuel
-fastag recharge,Fuel
+petrol refill fuel expense,Fuel
+diesel refill fuel expense,Fuel
+cng refill fuel expense,Fuel
+bike petrol fuel,Fuel
+car petrol fuel,Fuel
+fastag toll recharge fuel,Fuel
 
-electricity bill,Bills
-water bill,Bills
-gas cylinder booking,Bills
-society maintenance,Bills
-credit card bill,Bills
-dth recharge,Bills
-broadband installation,Bills
+electricity bill utilities,Utilities
+water bill utilities,Utilities
+gas cylinder booking utilities,Utilities
+society maintenance utilities,Utilities
+electrician service utilities,Utilities
+plumber charges utilities,Utilities
 
-jio recharge,Mobile & Internet
-airtel recharge,Mobile & Internet
-vi recharge,Mobile & Internet
-bsnl recharge,Mobile & Internet
-wifi broadband bill,Mobile & Internet
-dongle data recharge,Mobile & Internet
+jio mobile recharge internet,Mobile & Internet
+airtel mobile recharge internet,Mobile & Internet
+vi mobile recharge internet,Mobile & Internet
+wifi broadband bill internet,Mobile & Internet
+jio fiber broadband bill,Mobile & Internet
+internet data recharge mobile,Mobile & Internet
 
-pg rent payment,Rent
+netflix subscription streaming,Subscriptions
+amazon prime subscription streaming,Subscriptions
+spotify premium music subscription,Subscriptions
+youtube premium subscription,Subscriptions
+hotstar subscription streaming,Subscriptions
+sonyliv subscription streaming,Subscriptions
+
+pg rent monthly payment,Rent
 hostel rent payment,Rent
-flat rent payment,Rent
-room rent,Rent
+flat house rent payment,Rent
+room rent accommodation,Rent
 
-college semester fees,Education
-exam fees,Education
-udemy course purchase,Education
-coursera course payment,Education
-unacademy subscription,Education
-physics wallah batch,Education
-coding ninjas course,Education
+college semester fees education,Education
+exam fees education,Education
+udemy online course education,Education
+coursera online course education,Education
+coding ninjas programming course,Education
+online learning subscription education,Education
 
-doctor consultation,Health
-hospital bill,Health
-medicine purchase 1mg,Health
-pharmeasy order,Health
-apollo pharmacy,Health
-medical test charges,Health
-health checkup package,Health
+doctor consultation medical,Health & Medical
+hospital medical bill,Health & Medical
+medicine purchase pharmacy,Health & Medical
+pharmeasy online medicine order,Health & Medical
+apollo pharmacy medicine,Health & Medical
+medical test lab charges,Health & Medical
 
-gym membership,Fitness
-cultfit subscription,Fitness
-yoga class fees,Fitness
-zumba classes,Fitness
+gym membership fitness training,Fitness
+cultfit fitness subscription,Fitness
+yoga fitness class fees,Fitness
+zumba fitness dance class,Fitness
 
-netflix subscription,Entertainment
-amazon prime subscription,Entertainment
-hotstar subscription,Entertainment
-sonyliv subscription,Entertainment
-spotify premium,Entertainment
-youtube premium,Entertainment
-movie tickets bookmyshow,Entertainment
+movie tickets entertainment,Entertainment
+concert tickets entertainment,Entertainment
+weekend outing entertainment,Entertainment
+theme park visit entertainment,Entertainment
+bowling night entertainment,Entertainment
 
-amazon shopping,Shopping
-flipkart order,Shopping
-myntra clothes shopping,Shopping
-ajio fashion purchase,Shopping
-meesho order,Shopping
-tatacliq shopping,Shopping
-offline mall shopping,Shopping
+amazon shopping online purchase,Shopping
+flipkart online order shopping,Shopping
+myntra clothes shopping fashion,Shopping
+ajio fashion shopping,Shopping
+offline mall shopping clothes,Shopping
+casual shopping expense,Shopping
 
-mobile phone purchase,Electronics
-laptop purchase,Electronics
-tablet purchase,Electronics
-headphones purchase,Electronics
-earphones purchase,Electronics
-power bank purchase,Electronics
+mobile phone electronics purchase,Electronics
+laptop electronics purchase,Electronics
+tablet electronics purchase,Electronics
+headphones electronics purchase,Electronics
+earphones electronics purchase,Electronics
+power bank electronics purchase,Electronics
 
-life insurance premium,Insurance
-health insurance premium,Insurance
-bike insurance premium,Insurance
-car insurance premium,Insurance
-term insurance premium,Insurance
+life insurance premium payment,Insurance
+health insurance premium payment,Insurance
+bike insurance premium payment,Insurance
+car insurance premium payment,Insurance
+term insurance premium payment,Insurance
 
-bike emi payment,EMI / Loans
-car emi payment,EMI / Loans
-education loan emi,EMI / Loans
-personal loan emi,EMI / Loans
-credit card emi,EMI / Loans
+bike emi loan payment,EMI / Loans
+car emi loan payment,EMI / Loans
+education loan emi payment,EMI / Loans
+personal loan emi payment,EMI / Loans
+credit card emi payment,EMI / Loans
+credit card bill payment,EMI / Loans
 
-mutual fund sip,Investments
-zerodha investment,Investments
-groww investment,Investments
-paytm money investment,Investments
-stock market investment,Investments
-gold investment,Investments
+mutual fund sip investment,Investments
+stock market investment shares,Investments
+zerodha stock investment,Investments
+groww app investment,Investments
+gold investment purchase,Investments
+long term investment fund,Investments
 
-office lunch expense,Office / Work
-office cab expense,Office / Work
+emergency savings transfer,Savings
+monthly savings allocation,Savings
+bank savings deposit,Savings
+fixed deposit savings,Savings
+
+office lunch expense work,Office / Work
+office cab expense work,Office / Work
 work travel expense,Office / Work
 office stationery purchase,Office / Work
-laptop accessories purchase,Office / Work
+laptop accessories work,Office / Work
 
-parents medical expense,Family
 family grocery expense,Family
+parents medical expense,Family
 family function expense,Family
-home repair expense,Family
+home repair family expense,Family
 
-diwali shopping,Festivals & Gifts
-diwali gift purchase,Festivals & Gifts
-rakhi gift purchase,Festivals & Gifts
-birthday gift purchase,Festivals & Gifts
+diwali shopping festival gift,Festivals & Gifts
+birthday gift shopping,Festivals & Gifts
 wedding gift purchase,Festivals & Gifts
-charity donation,Festivals & Gifts
+festival gift shopping,Festivals & Gifts
+charity donation festival,Festivals & Gifts
 
-income tax payment,Taxes
-professional tax payment,Taxes
-property tax payment,Taxes
+income tax payment taxes,Taxes
+professional tax payment taxes,Taxes
+property tax payment taxes,Taxes
 
-cash withdrawal,Miscellaneous
-unexpected emergency expense,Miscellaneous
-small daily expense,Miscellaneous
-miscellaneous payment,Miscellaneous
+cash withdrawal atm,Miscellaneous
+unexpected expense miscellaneous,Miscellaneous
+small daily expense miscellaneous,Miscellaneous
+miscellaneous payment expense,Miscellaneous
