@@ -65,6 +65,7 @@ def login():
         if user and check_password_hash(user.password, request.form["password"]):
             login_user(user)
             return redirect(url_for("dashboard"))
+        flash("Invalid email or password")
 
     return render_template("login.html")
 
@@ -81,6 +82,7 @@ def register():
             password=generate_password_hash(request.form["password"])
         ))
         db.session.commit()
+        flash("Account created successfully. Please login.")
         return redirect(url_for("login"))
 
     return render_template("register.html")
@@ -94,7 +96,7 @@ def dashboard():
     health_score = None
 
     # ---------- ADD EXPENSE ----------
-    if request.method == "POST" and "description" in request.form:
+    if request.method == "POST" and "description" in request.form and "amount" in request.form:
         db.session.add(Expense(
             user_id=current_user.id,
             amount=float(request.form["amount"]),
@@ -102,6 +104,7 @@ def dashboard():
             category=model.predict([request.form["description"]])[0]
         ))
         db.session.commit()
+        return redirect(url_for("dashboard"))
 
     # ---------- SET BUDGET ----------
     if request.method == "POST" and "budget_category" in request.form:
@@ -122,6 +125,7 @@ def dashboard():
                 limit=limit
             ))
         db.session.commit()
+        return redirect(url_for("dashboard"))
 
     # ---------- FETCH EXPENSES ----------
     expenses = Expense.query.filter_by(
@@ -160,7 +164,6 @@ def dashboard():
         for e in expenses:
             if e.category in IGNORE_ANOMALY_CATEGORIES:
                 continue
-
             if e.amount > mean + 3 * std:
                 alert_messages.append(
                     f"Spending spike detected: ₹{e.amount} in {e.category}. Please review."
@@ -245,9 +248,7 @@ def upload_csv():
     if not file:
         return redirect(url_for("dashboard"))
 
-    rows = csv.DictReader(
-        file.stream.read().decode("utf-8").splitlines()
-    )
+    rows = csv.DictReader(file.stream.read().decode("utf-8").splitlines())
     count = 0
 
     for r in rows:
@@ -283,8 +284,7 @@ def export_expenses():
         generate(),
         mimetype="text/csv",
         headers={
-            "Content-Disposition":
-            "attachment;filename=expenses_report.csv"
+            "Content-Disposition": "attachment;filename=expenses_report.csv"
         }
     )
 

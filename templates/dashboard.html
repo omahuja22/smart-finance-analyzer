@@ -20,21 +20,21 @@
 <!-- ================= SUMMARY CARDS ================= -->
 <div class="row g-4 mb-4">
   <div class="col-md-4">
-    <div class="card p-3 text-center">
+    <div class="card p-3 text-center shadow-sm">
       <h6 class="text-muted">Monthly Income</h6>
       <h4 class="fw-bold">₹{{ income_value if income_value else "—" }}</h4>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="card p-3 text-center">
+    <div class="card p-3 text-center shadow-sm">
       <h6 class="text-muted">Total Spent</h6>
       <h4 class="fw-bold text-danger">₹{{ total_spent }}</h4>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="card p-3 text-center">
+    <div class="card p-3 text-center shadow-sm">
       <h6 class="text-muted">Net Savings</h6>
       <h4 class="fw-bold text-success">
         {% if savings_value is not none %}
@@ -48,14 +48,16 @@
 </div>
 
 <!-- ================= ADD EXPENSE ================= -->
-<div class="card p-4 mb-4">
+<div class="card p-4 mb-4 shadow-sm">
   <h5 class="mb-3">Add Expense</h5>
   <form method="POST" class="row g-3">
     <div class="col-md-3">
-      <input name="amount" class="form-control" placeholder="Amount (₹)" required>
+      <input name="amount" type="number" step="0.01"
+             class="form-control" placeholder="Amount (₹)" required>
     </div>
     <div class="col-md-6">
-      <input name="description" class="form-control" placeholder="Expense description" required>
+      <input name="description"
+             class="form-control" placeholder="Expense description" required>
     </div>
     <div class="col-md-3">
       <button class="btn btn-primary w-100">Add Expense</button>
@@ -66,22 +68,25 @@
 <!-- ================= CSV UPLOAD & EXPORT ================= -->
 <div class="row g-4 mb-4">
   <div class="col-md-6">
-    <div class="card p-4 h-100">
+    <div class="card p-4 h-100 shadow-sm">
       <h5 class="mb-3">Upload Bank Statement (CSV)</h5>
-      <form method="POST" action="/upload-csv" enctype="multipart/form-data" class="row g-3">
+      <form method="POST" action="/upload-csv"
+            enctype="multipart/form-data" class="row g-3">
         <div class="col-md-8">
-          <input type="file" name="file" class="form-control" accept=".csv" required>
+          <input type="file" name="file"
+                 class="form-control" accept=".csv" required>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-secondary w-100">Upload CSV</button>
+          <button class="btn btn-secondary w-100">Upload</button>
         </div>
       </form>
     </div>
   </div>
 
   <div class="col-md-6">
-    <div class="card p-4 h-100 d-flex justify-content-center">
-      <a href="/export-expenses" class="btn btn-outline-primary w-100">
+    <div class="card p-4 h-100 shadow-sm d-flex justify-content-center">
+      <a href="/export-expenses"
+         class="btn btn-outline-primary w-100">
         Download Expense Report (CSV)
       </a>
     </div>
@@ -89,27 +94,29 @@
 </div>
 
 <!-- ================= SET BUDGET ================= -->
-<div class="card p-4 mb-4">
+<div class="card p-4 mb-4 shadow-sm">
   <h5 class="mb-1">Set Category Budget</h5>
   <p class="text-muted small mb-3">
     Budgets reset automatically every month.
   </p>
   <form method="POST" class="row g-3">
     <div class="col-md-5">
-      <input name="budget_category" class="form-control" placeholder="Category (e.g. Food)">
+      <input name="budget_category"
+             class="form-control" placeholder="Category (e.g. Food)">
     </div>
     <div class="col-md-5">
-      <input name="budget_limit" class="form-control" placeholder="Monthly Limit (₹)">
+      <input name="budget_limit" type="number"
+             class="form-control" placeholder="Monthly Limit (₹)">
     </div>
     <div class="col-md-2">
-      <button class="btn btn-warning w-100">Save Budget</button>
+      <button class="btn btn-warning w-100">Save</button>
     </div>
   </form>
 </div>
 
 <!-- ================= BUDGET OVERVIEW ================= -->
 {% if budget_usage %}
-<div class="card p-4 mb-4">
+<div class="card p-4 mb-4 shadow-sm">
   <h5 class="mb-3">Budget Overview</h5>
 
   {% for b in budget_usage %}
@@ -148,14 +155,17 @@
 {% endif %}
 
 <!-- ================= INCOME & SAVINGS ================= -->
-<div class="card p-4 mb-4">
+<div class="card p-4 mb-4 shadow-sm">
   <h5 class="mb-3">Monthly Income & Savings</h5>
   <form method="POST" class="row g-3">
     <div class="col-md-8">
-      <input name="income" class="form-control" placeholder="Enter Monthly Income (₹)">
+      <input name="income" type="number"
+             class="form-control" placeholder="Enter Monthly Income (₹)">
     </div>
     <div class="col-md-4">
-      <button class="btn btn-success w-100">Calculate Savings</button>
+      <button class="btn btn-success w-100">
+        Calculate Savings
+      </button>
     </div>
   </form>
 
@@ -170,21 +180,21 @@
 <!-- ================= CHARTS ================= -->
 <div class="row g-4 mb-4">
   <div class="col-md-4">
-    <div class="card p-3">
+    <div class="card p-3 shadow-sm">
       <h6 class="text-center">Category-wise Spending</h6>
       <canvas id="pieChart"></canvas>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="card p-3">
+    <div class="card p-3 shadow-sm">
       <h6 class="text-center">Daily Spending Trend</h6>
       <canvas id="dailyChart"></canvas>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="card p-3">
+    <div class="card p-3 shadow-sm">
       <h6 class="text-center">Monthly Spending Trend</h6>
       <canvas id="monthlyChart"></canvas>
     </div>
@@ -192,14 +202,13 @@
 </div>
 
 <!-- ================= EXPENSE LIST ================= -->
-<div class="card p-4 mb-4">
+<div class="card p-4 mb-4 shadow-sm">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h5>Your Expenses</h5>
 
     {% if expenses %}
-    <!-- CLEAR ALL EXPENSES BUTTON -->
     <form method="POST" action="/clear-expenses"
-          onsubmit="return confirm('Are you sure you want to delete ALL expenses?');">
+          onsubmit="return confirm('Delete ALL expenses?');">
       <button class="btn btn-sm btn-outline-danger">
         Clear All Expenses
       </button>
@@ -225,7 +234,7 @@
   </ul>
   {% else %}
   <p class="text-muted">
-    No expenses yet. Add your first expense or upload a CSV file to get started.
+    No expenses yet. Add your first expense or upload a CSV file.
   </p>
   {% endif %}
 </div>
@@ -235,7 +244,7 @@
 <script>
 Chart.defaults.color = "#0f172a";
 
-new Chart(document.getElementById("pieChart"), {
+new Chart(pieChart, {
   type: "pie",
   data: {
     labels: {{ categories | tojson }},
@@ -243,7 +252,7 @@ new Chart(document.getElementById("pieChart"), {
   }
 });
 
-new Chart(document.getElementById("dailyChart"), {
+new Chart(dailyChart, {
   type: "line",
   data: {
     labels: {{ daily_dates | tojson }},
@@ -256,7 +265,7 @@ new Chart(document.getElementById("dailyChart"), {
   }
 });
 
-new Chart(document.getElementById("monthlyChart"), {
+new Chart(monthlyChart, {
   type: "bar",
   data: {
     labels: {{ months | tojson }},
