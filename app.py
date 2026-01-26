@@ -7,11 +7,11 @@ from flask import (
     Flask, render_template, redirect, url_for,
     request, flash, Response
 )
-from flask_login import (
+from flask_login import ( # type: ignore
     login_user, login_required, logout_user, current_user
 )
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import func
+from sqlalchemy import func # type: ignore
 
 from extensions import db, login_manager
 from models import User, Expense, Budget
